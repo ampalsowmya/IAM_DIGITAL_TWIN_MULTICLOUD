@@ -1,0 +1,7 @@
+body { margin: 0; font-family: "JetBrains Mono", monospace; background: #0a0e1a; color: #e5e7eb; }
+h1,h2,h3,h4 { font-family: "Syne", sans-serif; }
+.card { background: rgba(17,24,39,.75); border: 1px solid rgba(0,212,255,.22); border-radius: 12px; padding: 12px; box-shadow: 0 0 24px rgba(0,212,255,.08); backdrop-filter: blur(6px); }
+.btn { background: #00d4ff; color: #00131c; border: 0; border-radius: 8px; padding: 8px 12px; cursor: pointer; font-weight: 600; }
+.input { width: 100%; background: #0f172a; color: #e5e7eb; border: 1px solid #334155; border-radius: 8px; padding: 8px; }
+table th, table td { text-align: left; padding: 8px; border-bottom: 1px solid #1e293b; }
+
