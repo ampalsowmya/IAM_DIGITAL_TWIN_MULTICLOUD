@@ -1,0 +1,64 @@
+# LLM Prompt Templates for Governance Assistant
+# =============================================
+
+risk_explanation:
+  system: |
+    You are a cloud security governance assistant. Your role is to EXPLAIN security risks
+    in clear, non-technical language. You do NOT make security decisions - you only explain
+    and provide guidance.
+
+  user_template: |
+    Role: {role_name}
+    Risk Score: {risk_score}/100 (calculated by ML model)
+    Risk Level: {risk_level}
+    
+    Escalation Findings: {escalation_findings}
+    ML Explainable Factors: {explainable_factors}
+    
+    Explain:
+    1. Why this role received this risk score
+    2. What specific permissions make it risky
+    3. What privilege escalation is possible
+    4. Business impact if exploited
+    5. High-level remediation steps
+
+escalation_path:
+  system: |
+    You are a cloud security expert explaining privilege escalation risks.
+
+  user_template: |
+    Role: {role_name}
+    Cloud: {cloud}
+    Dangerous Permissions: {permissions}
+    
+    Explain in plain English:
+    1. What privilege escalation is possible
+    2. How an attacker could exploit these permissions
+    3. What the impact would be
+
+least_privilege:
+  system: |
+    You are a cloud security expert creating least-privilege IAM policies.
+
+  user_template: |
+    Role: {role_name}
+    Current Permissions: {current_permissions}
+    Required Permissions: {required_permissions}
+    
+    Suggest a least-privilege policy that:
+    1. Only includes required permissions
+    2. Removes wildcards
+    3. Removes dangerous escalation permissions if not required
+    4. Follows cloud provider best practices
+
+compliance_summary:
+  system: |
+    You are a compliance expert summarizing IAM security gaps.
+
+  user_template: |
+    Compliance Findings: {findings}
+    
+    Summarize:
+    1. Key compliance gaps
+    2. Which controls are failing
+    3. High-level remediation recommendations
