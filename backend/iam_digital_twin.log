@@ -1,0 +1,92 @@
+2026-02-11 18:06:58,381 - __main__ - INFO - ============================================================
+2026-02-11 18:06:58,383 - __main__ - INFO - IAM DIGITAL TWIN - AWS-ONLY WORKFLOW
+2026-02-11 18:06:58,384 - __main__ - INFO - ============================================================
+2026-02-11 18:06:58,384 - __main__ - INFO - 
+[1/6] IAM Data Ingestion (AWS)
+2026-02-11 18:06:58,385 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:06:58,385 - __main__ - INFO - Ingesting AWS IAM data...
+2026-02-11 18:06:58,386 - app.iam_ingestion.aws - INFO - Starting AWS IAM ingestion...
+2026-02-11 18:06:58,411 - botocore.credentials - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2026-02-11 18:07:02,143 - app.iam_ingestion.aws - INFO - Fetched 5 IAM roles from AWS
+2026-02-11 18:07:02,143 - app.iam_ingestion.aws - INFO - Processing role: AdminRole
+2026-02-11 18:07:04,918 - app.iam_ingestion.aws - INFO - Processing role: AWSServiceRoleForResourceExplorer
+2026-02-11 18:07:07,120 - app.iam_ingestion.aws - INFO - Processing role: AWSServiceRoleForSupport
+2026-02-11 18:07:09,203 - app.iam_ingestion.aws - INFO - Processing role: AWSServiceRoleForTrustedAdvisor
+2026-02-11 18:07:10,705 - app.iam_ingestion.aws - INFO - Processing role: BreakGlassRole
+2026-02-11 18:07:12,314 - app.graph.neo4j_client - ERROR - Failed to connect to Neo4j: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:07:12,315 - app.iam_ingestion.aws - ERROR - Unexpected error during AWS ingestion: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:07:12,315 - __main__ - ERROR - AWS ingestion failed: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:07:12,320 - __main__ - INFO - 
+[2/6] Privilege Escalation Detection
+2026-02-11 18:07:12,321 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:07:12,322 - app.graph.escalation - INFO - Detecting escalation risks for cloud: aws
+2026-02-11 18:07:12,322 - app.graph.neo4j_client - ERROR - Failed to connect to Neo4j: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:07:12,324 - __main__ - ERROR - Escalation detection failed: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:07:12,325 - __main__ - INFO - 
+[3/6] ML Risk Scoring
+2026-02-11 18:07:12,326 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:07:12,327 - __main__ - INFO - Training/loading ML models...
+2026-02-11 18:07:12,327 - app.ml.train - INFO - Training all ML models...
+2026-02-11 18:07:12,328 - app.ml.train - INFO - Training RandomForest model...
+2026-02-11 18:07:12,328 - app.graph.neo4j_client - ERROR - Failed to connect to Neo4j: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:07:12,329 - __main__ - ERROR - Risk scoring failed: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:07:12,329 - __main__ - INFO - 
+[4/6] LLM Governance Explanations
+2026-02-11 18:07:12,330 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:07:12,330 - __main__ - INFO - Generated 0 LLM explanations
+2026-02-11 18:07:12,332 - __main__ - INFO - 
+[5/6] Compliance Mapping
+2026-02-11 18:07:12,333 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:07:12,336 - __main__ - INFO - Generating ISO 27001 compliance report...
+2026-02-11 18:07:12,336 - app.compliance.iso27001 - INFO - Mapping IAM risks to ISO 27001 for role: all
+2026-02-11 18:07:12,337 - app.graph.neo4j_client - ERROR - Failed to connect to Neo4j: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:07:12,338 - __main__ - ERROR - Compliance mapping failed: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:07:12,339 - __main__ - INFO - 
+[6/6] Generating Summary
+2026-02-11 18:07:12,339 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:24:17,595 - __main__ - INFO - ============================================================
+2026-02-11 18:24:17,597 - __main__ - INFO - IAM DIGITAL TWIN - AWS-ONLY WORKFLOW
+2026-02-11 18:24:17,598 - __main__ - INFO - ============================================================
+2026-02-11 18:24:17,598 - __main__ - INFO - 
+[1/6] IAM Data Ingestion (AWS)
+2026-02-11 18:24:17,599 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:24:17,599 - __main__ - INFO - Ingesting AWS IAM data...
+2026-02-11 18:24:17,600 - app.iam_ingestion.aws - INFO - Starting AWS IAM ingestion...
+2026-02-11 18:24:17,643 - botocore.credentials - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2026-02-11 18:24:21,199 - app.iam_ingestion.aws - INFO - Fetched 5 IAM roles from AWS
+2026-02-11 18:24:21,199 - app.iam_ingestion.aws - INFO - Processing role: AdminRole
+2026-02-11 18:24:22,748 - app.iam_ingestion.aws - INFO - Processing role: AWSServiceRoleForResourceExplorer
+2026-02-11 18:24:24,650 - app.iam_ingestion.aws - INFO - Processing role: AWSServiceRoleForSupport
+2026-02-11 18:24:26,864 - app.iam_ingestion.aws - INFO - Processing role: AWSServiceRoleForTrustedAdvisor
+2026-02-11 18:24:28,355 - app.iam_ingestion.aws - INFO - Processing role: BreakGlassRole
+2026-02-11 18:24:30,080 - app.graph.neo4j_client - ERROR - Failed to connect to Neo4j: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:24:30,082 - app.iam_ingestion.aws - ERROR - Unexpected error during AWS ingestion: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:24:30,083 - __main__ - ERROR - AWS ingestion failed: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:24:30,088 - __main__ - INFO - 
+[2/6] Privilege Escalation Detection
+2026-02-11 18:24:30,088 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:24:30,089 - app.graph.escalation - INFO - Detecting escalation risks for cloud: aws
+2026-02-11 18:24:30,090 - app.graph.neo4j_client - ERROR - Failed to connect to Neo4j: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:24:30,090 - __main__ - ERROR - Escalation detection failed: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:24:30,091 - __main__ - INFO - 
+[3/6] ML Risk Scoring
+2026-02-11 18:24:30,092 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:24:30,092 - __main__ - INFO - Training/loading ML models...
+2026-02-11 18:24:30,093 - app.ml.train - INFO - Training all ML models...
+2026-02-11 18:24:30,093 - app.ml.train - INFO - Training RandomForest model...
+2026-02-11 18:24:30,094 - app.graph.neo4j_client - ERROR - Failed to connect to Neo4j: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:24:30,096 - __main__ - ERROR - Risk scoring failed: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:24:30,096 - __main__ - INFO - 
+[4/6] LLM Governance Explanations
+2026-02-11 18:24:30,097 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:24:30,098 - __main__ - INFO - Generated 0 LLM explanations
+2026-02-11 18:24:30,098 - __main__ - INFO - 
+[5/6] Compliance Mapping
+2026-02-11 18:24:30,099 - __main__ - INFO - ------------------------------------------------------------
+2026-02-11 18:24:30,099 - __main__ - INFO - Generating ISO 27001 compliance report...
+2026-02-11 18:24:30,100 - app.compliance.iso27001 - INFO - Mapping IAM risks to ISO 27001 for role: all
+2026-02-11 18:24:30,100 - app.graph.neo4j_client - ERROR - Failed to connect to Neo4j: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:24:30,101 - __main__ - ERROR - Compliance mapping failed: URI scheme '' is not supported. Supported URI schemes are ['bolt', 'bolt+ssc', 'bolt+s', 'neo4j', 'neo4j+ssc', 'neo4j+s']. Examples: bolt://host[:port] or neo4j://host[:port][?routing_context]
+2026-02-11 18:24:30,104 - __main__ - INFO - 
+[6/6] Generating Summary
+2026-02-11 18:24:30,105 - __main__ - INFO - ------------------------------------------------------------
