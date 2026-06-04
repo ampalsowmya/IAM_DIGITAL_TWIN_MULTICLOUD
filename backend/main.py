@@ -23,6 +23,22 @@ from health import router as health_router
 from ingestion import ingest_aws_iam, log_activity, router as ingest_router
 from ml_engine import train_models
 from risk import compliance_router, router as risk_router
+from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
+from fastapi import Response
+
+# Add a counter metric
+REQUEST_COUNT = Counter('app_request_count', 'Total requests', ['method', 'endpoint'])
+
+# Add this endpoint anywhere in your FastAPI app
+@app.get("/metrics")
+async def metrics():
+    return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
+
+# Track requests on your root endpoint
+@app.get("/")
+async def root():
+    REQUEST_COUNT.labels(method='GET', endpoint='/').inc()
+    return {"message": "IAM Digital Twin API"}
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
